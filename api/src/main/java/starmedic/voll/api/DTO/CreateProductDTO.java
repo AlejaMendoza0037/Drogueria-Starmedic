@@ -1,7 +1,6 @@
 package starmedic.voll.api.DTO;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import starmedic.voll.api.Entity.Category;
 
@@ -9,7 +8,7 @@ import starmedic.voll.api.Entity.Category;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
+public class CreateProductDTO {
 
      String nombre;
      String descripcion;

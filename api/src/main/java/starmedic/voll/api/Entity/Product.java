@@ -1,7 +1,6 @@
 package starmedic.voll.api.Entity;
 
 
-import lombok.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -16,7 +15,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import starmedic.voll.api.DTO.CreateProductDTO;
+import starmedic.voll.api.DTO.UpdateProductDto;
 
 
 @Entity
@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+//@EqualsAndHashCode
 public class Product {
 
     @Id
@@ -33,9 +34,43 @@ public class Product {
 
     private String nombre;
     private String descripcion;
-    private Double precio;
-    private Integer stock;
+    private String precio;
+    private String stock;
 
     @Enumerated(EnumType.STRING)
     private Category categoria;
+
+    public Product(CreateProductDTO productoDto) {
+        this.nombre=productoDto.getNombre();
+        this.descripcion=productoDto.getDescripcion();
+        this.precio=productoDto.getPrecio();
+        this.stock=productoDto.getStock();
+        this.categoria=productoDto.getCategoria();
+
+    }
+
+
+    public void updateDataProduct(UpdateProductDto updateProductDto) {
+        if (updateProductDto.getNombre()!= null){
+            this.nombre=updateProductDto.getNombre();
+        }
+
+        if (updateProductDto.getDescripcion()!= null){
+
+            this.descripcion=updateProductDto.getDescripcion();
+        }
+
+        if (updateProductDto.getPrecio()!= null){
+
+            this.precio=updateProductDto.getPrecio();
+        }
+
+        if (updateProductDto.getStock()!= null){
+            this.stock=updateProductDto.getStock();
+        }
+
+
+
+
+    }
 }
